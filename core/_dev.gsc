@@ -247,7 +247,7 @@ DEVELOPER_TEST_FUNCTION()
     
     
     
-    thread spawnDefaultZombie(100,20);
+    /*thread spawnDefaultZombie(100,20);
     wait .2;
-    iprintln(level.pix_zombie_count);
+    iprintln(level.pix_zombie_count);*/
 }

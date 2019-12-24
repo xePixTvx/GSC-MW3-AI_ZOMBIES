@@ -44,9 +44,5 @@ init_zombie_mode()
     
     
     level notify("aiz_loaded");
-    
-    
-    
-    
     return true;
 }

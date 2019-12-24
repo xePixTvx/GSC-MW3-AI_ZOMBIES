@@ -47,8 +47,12 @@ map_mp_underground()
     addZombieModel("crawler","head","head_opforce_russian_air_sniper");
     
     //Zombie Spawnpoints
-    addZombieSpawnpoint("default",(-752.675,-248.633,8.125),(0,-39,0));
-    addZombieSpawnpoint("default",(733.64,-303.485,8.125),(0,-150,0));
+    addZombieSpawnpoint("default",(-803.612,-228.368,8.125),(0,-35,0));
+    addZombieSpawnpoint("default",(-661.063,-197.455,8.125),(0,-53,0));
+    addZombieSpawnpoint("default",(-651.958,-395.846,8.125),(0,-32,0));
+    addZombieSpawnpoint("default",(757.584,-147.398,8.125),(0,-127,0));
+    addZombieSpawnpoint("default",(735.48,-319.414,8.125),(0,-139,0));
+    addZombieSpawnpoint("default",(659.436,-310.947,8.125),(0,-131,0));
 }
 
 

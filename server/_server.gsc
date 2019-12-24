@@ -1,7 +1,8 @@
 init_server()
 {
-    level.Power = false;
-    level.Wave  = 0;
+    level.Power            = false;
+    level.Wave             = 0;
+    level.IntermissionTime = 40;
     
     
     

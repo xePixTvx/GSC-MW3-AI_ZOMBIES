@@ -19,7 +19,7 @@
 
 /* 
     LAST WORKED ON:
-                    WAVE SYSTEM
+                    WAVE SYSTEM ------ fix zombie spawn amount
 */
 
 
