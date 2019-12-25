@@ -1,5 +1,6 @@
 zombie_logic_health_think()
 {
+    addToZombieList(self);
     self.hasHead = true;
     while(self.pers["isAlive"])
     {
@@ -79,7 +80,6 @@ zombie_doDeath()
     {
         //self thread _zombie_do_drop();
     }
-    //zombie_counter_decrease();
     self.pers["isAlive"] = false;
     if(isDefined(self.hitbox))
     {
@@ -97,7 +97,7 @@ zombie_doDeath()
         self zombie_do_c4_explosion();
     }
     wait 5;
-    thread removeFromZombieList(self);
+    removeFromZombieList(self);
     if(self.type=="exploder")
     {
         self.effect_c4_blink delete();

@@ -24,7 +24,5 @@ spawnDefaultZombie(health,damage,kill_reward=50,hit_reward=5,headshot_reward=20)
     zombie thread zombie_logic_health_think();
     zombie thread zombie_logic_attack_think();
     zombie thread zombie_logic_move_think();
-    
-    //add to list
-    thread addToZombieList(zombie);
+    wait .2;
 }

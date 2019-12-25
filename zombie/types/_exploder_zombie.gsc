@@ -25,14 +25,12 @@ spawnExploderZombie(health,damage,kill_reward=50,hit_reward=5,headshot_reward=20
     wait .2;//min wait should be atleast 1 frame
     zombie.effect_c4_blink = playFxOnTag(level.aiz_asset["effect"]["zombie_c4_blink"],zombie.c4,"tag_fx");
     
+    //set anim mode to idle
+    zombie zombie_setAnimMode("idle");
+    
     //Start Zombie Logic
     zombie thread zombie_logic_health_think();
     zombie thread zombie_logic_attack_think();
     zombie thread zombie_logic_move_think();
-    
-    //set anim mode to idle
-    zombie zombie_setAnimMode("idle");
-    
-    //add to list
-    thread addToZombieList(zombie);
+    wait .2;
 }

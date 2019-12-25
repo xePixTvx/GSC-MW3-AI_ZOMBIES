@@ -19,7 +19,7 @@
 
 /* 
     LAST WORKED ON:
-                    WAVE SYSTEM ------ fix zombie spawn amount
+    WAVE SYSTEM ------ fix zombie after death animation bug
 */
 
 

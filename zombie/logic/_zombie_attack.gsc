@@ -12,7 +12,7 @@ zombie_logic_attack_think()
                 {
                     self scriptModelPlayAnim(melee_anim.id);
                 }
-                if(level.DEV_SETTINGS["Zombies_No_Damage"])
+                if(!level.DEV_SETTINGS["Zombies_No_Damage"])
                 {
                     target thread maps\mp\gametypes\_damage::finishPlayerDamageWrapper(self,self,self.damage,0,"MOD_MELEE","none",target.origin,target.origin,"none",0,0);
                 }

@@ -4,7 +4,7 @@
 
 init_wave()
 {
-    level.max_zombies_active = 30;
+    level.max_zombies_active = 40;
     
     
     level.wave_zombie_amount = [];
@@ -39,15 +39,18 @@ WAVE_monitor()
     level endon("game_ended");
     for(;;)
     {
-        level waittill("next_wave");
-        level thread SERVER_set_vision_for_all_players();
-        level thread SERVER_intermission_players_skip();
-        level thread SERVER_doIntermission();
-        level waittill("intermission_done");
-        level.Wave ++;
-        level thread SERVER_updateWaveCounter();
-        wait .4;
-        level thread WAVE_do_wave_setup();
+        if(!level.DEV_SETTINGS["Disable_Wave_Start"])
+        {
+            level waittill("next_wave");
+            level thread SERVER_set_vision_for_all_players();
+            level thread SERVER_intermission_players_skip();
+            level thread SERVER_doIntermission();
+            level waittill("intermission_done");
+            level.Wave ++;
+            level thread SERVER_updateWaveCounter();
+            wait .4;
+            level thread WAVE_do_wave_setup();
+        }
     }
 }
 
@@ -57,7 +60,7 @@ WAVE_watch_zombie_count()
     for(;;)
     {
         level waittill("update_active_zombies");
-        if(level.pix_zombie_count<=0)//&& level.dev_settings["Allow_Wave_Start"]
+        if(level.pix_zombie_count<=0)
         {
             level notify("next_wave");
             level.pix_zombies      = [];
@@ -145,42 +148,43 @@ WAVE_spawnZombies(delay)
         {
             if(default_zombies>0)
             {
-                thread spawnDefaultZombie(level.wave_zombie_settings["default"].health,level.wave_zombie_settings["default"].damage,level.wave_zombie_settings["default"].kill_reward,level.wave_zombie_settings["default"].hit_reward,level.wave_zombie_settings["default"].headshot_reward);
+                spawnDefaultZombie(level.wave_zombie_settings["default"].health,level.wave_zombie_settings["default"].damage,level.wave_zombie_settings["default"].kill_reward,level.wave_zombie_settings["default"].hit_reward,level.wave_zombie_settings["default"].headshot_reward);
                 default_zombies --;
                 total --;
             }
             if(sprinter_zombies>0)
             {
-                thread spawnSprinterZombie(level.wave_zombie_settings["sprinter"].health,level.wave_zombie_settings["sprinter"].damage,level.wave_zombie_settings["sprinter"].kill_reward,level.wave_zombie_settings["sprinter"].hit_reward,level.wave_zombie_settings["sprinter"].headshot_reward);
+                spawnSprinterZombie(level.wave_zombie_settings["sprinter"].health,level.wave_zombie_settings["sprinter"].damage,level.wave_zombie_settings["sprinter"].kill_reward,level.wave_zombie_settings["sprinter"].hit_reward,level.wave_zombie_settings["sprinter"].headshot_reward);
                 sprinter_zombies --;
                 total --;
             }
             if(crawler_zombies>0)
             {
-                thread spawnCrawlerZombie(level.wave_zombie_settings["crawler"].health,level.wave_zombie_settings["crawler"].damage,level.wave_zombie_settings["crawler"].kill_reward,level.wave_zombie_settings["crawler"].hit_reward);
+                spawnCrawlerZombie(level.wave_zombie_settings["crawler"].health,level.wave_zombie_settings["crawler"].damage,level.wave_zombie_settings["crawler"].kill_reward,level.wave_zombie_settings["crawler"].hit_reward);
                 crawler_zombies --;
                 total --;
             }
             if(exploder_zombies>0)
             {
-                thread spawnExploderZombie(level.wave_zombie_settings["exploder"].health,level.wave_zombie_settings["exploder"].damage,level.wave_zombie_settings["exploder"].kill_reward,level.wave_zombie_settings["exploder"].hit_reward,level.wave_zombie_settings["exploder"].headshot_reward);
+                spawnExploderZombie(level.wave_zombie_settings["exploder"].health,level.wave_zombie_settings["exploder"].damage,level.wave_zombie_settings["exploder"].kill_reward,level.wave_zombie_settings["exploder"].hit_reward,level.wave_zombie_settings["exploder"].headshot_reward);
                 exploder_zombies --;
                 total --;
             }
             if(jugger_zombies>0)
             {
-                thread spawnJuggerZombie(level.wave_zombie_settings["jugger"].health,level.wave_zombie_settings["jugger"].damage,level.wave_zombie_settings["jugger"].kill_reward,level.wave_zombie_settings["jugger"].hit_reward,level.wave_zombie_settings["jugger"].headshot_reward);
+                spawnJuggerZombie(level.wave_zombie_settings["jugger"].health,level.wave_zombie_settings["jugger"].damage,level.wave_zombie_settings["jugger"].kill_reward,level.wave_zombie_settings["jugger"].hit_reward,level.wave_zombie_settings["jugger"].headshot_reward);
                 jugger_zombies --;
                 total --;
             }
         }
         else
         {
-            if(level.pix_zombies_count<=allowSpawnAgain)
+            if(level.pix_zombie_count<=allowSpawnAgain)
             {
                 level.canSpawnZombies = true;
             }
         }
+        iprintln("^1TOTAL: ^2"+total);
         wait spawn_delay;
     } 
 }

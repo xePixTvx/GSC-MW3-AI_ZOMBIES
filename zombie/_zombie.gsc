@@ -166,7 +166,7 @@ isZombieSpawnpointTypeDefined(zombie_type)
     {
         return false;
     }
-    if(level.zombie_spawnpoint[zombie_type].size>=1)
+    if(level.zombie_spawnpoint[zombie_type].size>=1||isDefined(level.zombie_spawnpoint[zombie_type]))
     {
         return true;
     }
