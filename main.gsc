@@ -19,7 +19,7 @@
 
 /* 
     LAST WORKED ON:
-    WAVE SYSTEM ------ fix zombie after death animation bug
+    Zombie System ----- zombie eyes(not working right now)
 */
 
 

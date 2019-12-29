@@ -1,6 +1,7 @@
 zombie_logic_attack_think()
 {
-    while(self.pers["isAlive"])
+    self endon("zombie_died");
+    for(;;)//while(self.pers["isAlive"])
     {
         foreach(target in level.players)
         {

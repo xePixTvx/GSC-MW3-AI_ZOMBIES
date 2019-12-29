@@ -11,6 +11,7 @@ loadSettings()
     level.DEV_SETTINGS["Disable_precache"] = false;//disable precaching(cause of weird overflow errors in the past xD)
     level.DEV_SETTINGS["Zombies_No_Damage"] = false;//zombies are not able to do any damage
     level.DEV_SETTINGS["Disable_Wave_Start"] = false;//no wave gets started
+    level.DEV_SETTINGS["Zombies_Frozen"] = false;
     
     
     

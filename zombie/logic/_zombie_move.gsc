@@ -2,7 +2,8 @@ zombie_logic_move_think()
 {
     max_checks = 40;
     check      = 0;
-    while(self.pers["isAlive"])
+    self endon("zombie_died");
+    for(;;)//while(self.pers["isAlive"])
     {
         self.current_target = self getBestTarget();
         

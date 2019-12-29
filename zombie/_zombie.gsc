@@ -1,6 +1,13 @@
 init_zombie()
 {
-    level.zombie_freeze = false;
+    if(level.DEV_SETTINGS["Zombies_Frozen"])
+    {
+        level.zombie_freeze = true;
+    }
+    else
+    {
+        level.zombie_freeze = false;
+    }
     
     
     

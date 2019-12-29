@@ -247,8 +247,8 @@ DEVELOPER_TEST_FUNCTION()
     
     
     
-    /*thread spawnDefaultZombie(100,20);
-    wait .2;
-    iprintln(level.pix_zombie_count);*/
-    iprintln(getRandomZombieSpawnpoint("jugger").origin);
+    //thread spawnDefaultZombie(100,20);
+    //wait .2;
+    //iprintln(level.pix_zombie_count);
+    //iprintln(getRandomZombieSpawnpoint("jugger").origin);
 }

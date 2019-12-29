@@ -2,7 +2,8 @@ zombie_logic_health_think()
 {
     addToZombieList(self);
     self.hasHead = true;
-    while(self.pers["isAlive"])
+    self endon("zombie_died");
+    for(;;)//while(self.pers["isAlive"])
     {
         //wait for any damage
         self.hitbox waittill("damage",iDamage,attacker,iDFlags,vPoint,type,victim,vDir,sHitLoc,psOffsetTime,sWeapon);
@@ -76,11 +77,13 @@ zombie_logic_health_think()
 
 zombie_doDeath()
 {
+    self notify("zombie_died");
     if(self.type!="jugger")
     {
         //self thread _zombie_do_drop();
     }
     self.pers["isAlive"] = false;
+    wait .1;
     if(isDefined(self.hitbox))
     {
         self.hitbox delete();//delete hitbox so players dont get blocked by it
@@ -94,6 +97,7 @@ zombie_doDeath()
     }
     if(self.type=="exploder")
     {
+        wait 0.05;
         self zombie_do_c4_explosion();
     }
     wait 5;
@@ -128,7 +132,7 @@ zombie_lose_head()
     }
     self.head MoveGravity((x,y,z),2);
     self.hitbox delete();//headless zombies dont have a collision + cant attack anymore --- removing collision so they dont block the player
-    //self.pers["isAlive"] = false;//also set them as dead here cause helis,sentrys.... will still look for the hitbox(collision) --- nope cause move think would be stopped
+    self.pers["isAlive"] = false;//also set them as dead here cause helis,sentrys.... will still look for the hitbox(collision)
     //self.head PhysicsLaunchServer((x,y,z),(x,y,z));
 }
 
