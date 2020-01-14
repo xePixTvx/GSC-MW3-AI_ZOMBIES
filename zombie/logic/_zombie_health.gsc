@@ -3,7 +3,7 @@ zombie_logic_health_think()
     addToZombieList(self);
     self.hasHead = true;
     self endon("zombie_died");
-    for(;;)//while(self.pers["isAlive"])
+    for(;;)
     {
         //wait for any damage
         self.hitbox waittill("damage",iDamage,attacker,iDFlags,vPoint,type,victim,vDir,sHitLoc,psOffsetTime,sWeapon);

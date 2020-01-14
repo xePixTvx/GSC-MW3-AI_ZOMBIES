@@ -1,23 +1,24 @@
 zombie_logic_move_think()
 {
-    max_checks = 40;
-    check      = 0;
+    self.max_search_checks = 40;
+    self.search_checks     = 0;
     self endon("zombie_died");
-    for(;;)//while(self.pers["isAlive"])
+    for(;;)
     {
         self.current_target = self getBestTarget();
         
         
         //if target is not visible retry finding a new one 40 times if still not found respawn at a random spawnpoint --- thats mostly to fix the "player cannot find zombie bug" xD
-        if(check<max_checks && !level.zombie_freeze && !self zombie_canSee_Target(self.current_target))
+        if(self.search_checks<self.max_search_checks && !level.zombie_freeze && !self zombie_canSee_Target(self.current_target))
         {
-            check ++;
+            self.search_checks ++;
         }
-        if(check>=max_checks)
+        if(self.search_checks>=self.max_search_checks)
         {
             //get random cause getting the best seems to be to much for 65 zombies at the same time
-            self.origin = getRandomZombieSpawnpoint(self.type).origin;//getBestSpawnPoint(self);
-            check       = 0;
+            self.origin        = getRandomZombieSpawnpoint(self.type).origin;//getBestSpawnPoint(self);
+            self.search_checks = 0;
+            //go into search mode
         }
         
         

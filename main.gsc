@@ -19,7 +19,7 @@
 
 /* 
     LAST WORKED ON:
-    Zombie System ----- zombie eyes(not working right now)
+    Zombie System --- player search
 */
 
 
