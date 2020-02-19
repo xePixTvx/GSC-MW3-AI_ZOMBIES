@@ -15,10 +15,10 @@ zombie_logic_move_think()
         }
         if(self.search_checks>=self.max_search_checks)
         {
-            //get random cause getting the best seems to be to much for 65 zombies at the same time
+            //get random cause getting the best seems to be to much for 65+ zombies at the same time
             self.origin        = getRandomZombieSpawnpoint(self.type).origin;//getBestSpawnPoint(self);
             self.search_checks = 0;
-            //go into search mode
+            //go into search mode ---- ADD HERE
         }
         
         
@@ -26,7 +26,7 @@ zombie_logic_move_think()
         {
             if(self zombie_canSee_Target(self.current_target))
             {
-                check = 0;//if target found and visible reset the check to 0
+                self.search_checks = 0;//if target found and visible reset the check to 0
                 self updateZombieMoveState("moving");
                 
                 //Move & Rotate

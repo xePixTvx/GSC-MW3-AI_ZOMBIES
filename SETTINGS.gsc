@@ -9,7 +9,7 @@ loadSettings()
     level.DEV_SETTINGS["TEST_FUNCTION"] = ::DEVELOPER_TEST_FUNCTION;//dev mode test function
     level.DEV_SETTINGS["GIVE_WEAPON"] = "iw5_m4_mp_reflex";//give weapon if dev mode is true
     level.DEV_SETTINGS["Enable_Team_Class_Menus"] = false;//dont block team and class menus
-    level.DEV_SETTINGS["Disable_precache"] = false;//disable precaching(cause of weird overflow errors in the past xD) -- instant string overflow = enable this ;) ------ and report that bug pls xD
+    level.DEV_SETTINGS["Disable_precache"] = false;//disable precaching(cause of weird overflow errors in the past) -- instant string overflow = enable this ;) ------ and report that bug pls xD
     level.DEV_SETTINGS["Zombies_No_Damage"] = false;//zombies are not able to do any damage
     level.DEV_SETTINGS["Disable_Wave_Start"] = false;//no wave gets started
     level.DEV_SETTINGS["Zombies_Frozen"] = false;//all zombies are frozen
